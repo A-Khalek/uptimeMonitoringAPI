@@ -10,7 +10,7 @@ const url = require('url');
 // Module Scaffolding
 const handler = {};
 
-handler.handelReqRes =(req, res)=>{
+handler.handleReqRes = (req, res)=>{
     // request handeling
     // get the url parsing
     const parseUrl = url.parse(req.url,true);
@@ -20,6 +20,8 @@ handler.handelReqRes =(req, res)=>{
     const queryStringObject = parseUrl.query;
     const headersObject = req.headers;
 
+    console.log(headersObject);
+    
     const decoder = new StringDecoder('utf-8');
     let realData = '';
     req.on('data',(buffer)=>{
@@ -32,5 +34,4 @@ handler.handelReqRes =(req, res)=>{
     // response handel
     res.end('hello nodejs');
     })
-    
 }

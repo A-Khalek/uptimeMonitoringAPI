@@ -5,10 +5,7 @@
 
 // dependencies
 const http = require('http');
-
-
 const  {handelReqRes} = require('./helpers/handelReqRes');
-// import * as http from 'http'; //not working
 
 // app object - module scaffolding
 const app = {};
@@ -22,11 +19,12 @@ app.config = {
 app.createServer = ()=>{
     const server = http.createServer(app.handelReqRes);
     server.listen(app.config.port,()=>{
-        console.log(`listing to port no ${app.config.port}`);
+        console.log(`Listing Port no ${app.config.port}`);
     });
 }
 
-
+// handle Request response
+app.handelReqRes = handelReqRes;
 
 // start the server
 app.createServer();
