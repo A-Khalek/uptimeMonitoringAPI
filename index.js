@@ -6,6 +6,7 @@
 // dependencies
 const http = require('http');
 const url = require('url');
+const {StringDecoder} = require('string_decoder');
 // import * as http from 'http'; //not working
 
 // app object - module scaffolding
@@ -35,8 +36,19 @@ app.handleReqRes =(req, res)=>{
     const queryStringObject = parseUrl.query;
     const headersObject = req.headers;
 
+    const decoder = new StringDecoder('utf-8');
+    let realData = '';
+    req.on('data',(buffer)=>{
+        realData += decoder.write(buffer);
+    });
+
+    req.on('end',()=>{
+        realData += decoder.end();
+        console.log(realData);
     // response handel
     res.end('hello nodejs');
+    })
+    
 }
 
 // start the server
