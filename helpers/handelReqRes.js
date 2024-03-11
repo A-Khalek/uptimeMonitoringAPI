@@ -13,25 +13,29 @@ const handler = {};
 handler.handleReqRes = (req, res)=>{
     // request handeling
     // get the url parsing
-    const parseUrl = url.parse(req.url,true);
-    const path = parseUrl.pathname;
-    const trimmedPath = path.replace(/^\/+|\/+$/g,'');
-    const method = req.method.toLowerCase();
-    const queryStringObject = parseUrl.query;
-    const headersObject = req.headers;
 
-    console.log(headersObject);
+   
     
-    const decoder = new StringDecoder('utf-8');
-    let realData = '';
-    req.on('data',(buffer)=>{
-        realData += decoder.write(buffer);
-    });
+    // const parseUrl = url.parse(req.url,true);
+    // const path = parseUrl.pathname;
+    // const trimmedPath = path.replace(/^\/+|\/+$/g,'');
+    // const method = req.method.toLowerCase();
+    // const queryStringObject = parseUrl.query;
+    // const headersObject = req.headers;
 
-    req.on('end',()=>{
-        realData += decoder.end();
-        console.log(realData);
-    // response handel
-    res.end('hello nodejs');
-    })
+    console.log("hello node");
+   
+    
+    // const decoder = new StringDecoder('utf-8');
+    // let realData = '';
+    // req.on('data',(buffer)=>{
+    //     realData += decoder.write(buffer);
+    // });
+
+    // req.on('end',()=>{
+    //     realData += decoder.end();
+    //     console.log(realData);
+    // // response handel
+    // res.end('hello nodejs ');
+    // })
 }
